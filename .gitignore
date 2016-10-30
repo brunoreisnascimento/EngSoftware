@@ -10,8 +10,6 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-.classpath
-.project
-.settings/
 target/
 *~
+nbproject/
