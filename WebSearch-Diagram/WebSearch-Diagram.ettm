@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeManagement projectID="DCE.FA3CEA7F-E1E6-7447-F3C0-E0E57CEA0540">
+	<Locations nextID="1">
+	<Location locID="T.0" href="./WebSearch-Diagram.etup"/></Locations>
+
+   <Types>
+   <Type id="DCE.93E5A556-CC14-0525-F1A9-1D5FC0F3DD21" location="T.0" name="Unnamed"/></Types>
+
+	<IrresolvableTypes>
+	</IrresolvableTypes>
+
+</TypeManagement>
