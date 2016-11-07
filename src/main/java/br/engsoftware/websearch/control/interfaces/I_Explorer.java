@@ -5,18 +5,17 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 /**
- * @author cleversonc6
+ * @author cleverson
  * @since 25/10/2016
- * @version 0.0.1
+ * @version 1.0.0
  */
 public interface I_Explorer 
 {
-    
- /**
+  /**
   * Retorna o html de uma url passada
  * @author cleversonc6
      * @param site
- * @since 27/10/2016
+ * @since 04/11/2016
  * @return Document
  */
     Document getDocument(Site site);
@@ -26,7 +25,7 @@ public interface I_Explorer
  * @author cleversonc6
      * @param doc
      * @param site
- * @since 27/10/2016
+ * @since 04/11/2016
  * @version 0.0.1
  * @return Document
  */

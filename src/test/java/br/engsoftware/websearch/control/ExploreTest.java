@@ -2,35 +2,45 @@ package br.engsoftware.websearch.control;
 
 import br.engsoftware.websearch.model.News;
 import br.engsoftware.websearch.model.Site;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author cleversonc6
- * @see News
- * @version 0.0.1
+ * @author cleverson
+ * @version 1.0.0
  */
 public class ExploreTest 
 {
+    
+    
     /**
      * Testes do getDocument()
      */
     @Test
     public void testGetDocument() 
     {
-        System.out.println("getDocument");
-        Site site = null;
-        Explore instance = null;
-        Document expResult = null;
-        Document result = instance.getDocument(site);
-        assertEquals(expResult, result);
-        fail("Falhou!");
+        try 
+        {
+            System.out.println("getDocument");
+            Explore instance = new Explore();
+            Document expResult;       
+                    
+            Site site = new Site("http://br-linux.org");                    
+            expResult = Jsoup.connect("http://br-linux.org").get();            
+            
+            assertEquals(expResult, instance.getDocument(site));
+            fail("Falhou!");
+        } 
+        catch (IOException ex) 
+        {
+            System.err.println(ex.getMessage());
+        }
     }
 
     /**
