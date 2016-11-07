@@ -3,8 +3,6 @@ package br.engsoftware.websearch.control;
 import br.engsoftware.websearch.model.News;
 import br.engsoftware.websearch.model.Site;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
