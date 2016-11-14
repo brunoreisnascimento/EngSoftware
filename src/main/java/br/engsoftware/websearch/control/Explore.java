@@ -4,9 +4,11 @@ import br.engsoftware.websearch.control.interfaces.I_Explorer;
 import br.engsoftware.websearch.model.News;
 import br.engsoftware.websearch.model.Site;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /**
@@ -18,8 +20,13 @@ public class Explore implements I_Explorer
 {
 
     private List<Site> listSite;
+    private List<News> listNews;
     private News news;
     private String key;
+    private String tagContainer;
+    private String tagPost;
+    private String tagData;
+    private static final String link = "a[href]";
 
     public Explore() 
     {    }
@@ -28,29 +35,7 @@ public class Explore implements I_Explorer
     public Explore(String keySearch)
     {   this.key = keySearch;   }   
     
-    
-    /**
-     * Verifica se determinada noticia determinada pela chava existe nos sites cadastrados
-     * @param ele
-     * @param key
-     * @return boolean
-     */
-    public boolean existsNews(Elements ele, String key)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-    
-    /**
-     * Cria o objeto News 
-     * @param ele
-     * @param tag
-     * @return 
-     */
-    public News makeNews(Elements ele, String tag)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-    
+                
     public void setKey(String key) 
     {
         this.key = key;
@@ -65,7 +50,7 @@ public class Explore implements I_Explorer
     public News getNews()
     { return this.news;   }
     
-
+    
     /**
      * Verifica se a url e a conexão estão corretas e se estiver retorna o html do site
      * @param site
@@ -86,11 +71,35 @@ public class Explore implements I_Explorer
          
          return doc;
     }
-
-    @Override
-    public Elements getContent(Document doc, Site site) 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
-}
+    /**
+     * Retorna uma lista<News> de determinado site
+     * @param site
+     * @return 
+     */
+    public List<News> makeNews(Site site)
+    {                
+        Document doc = this.getDocument(site);
+        
+        this.tagContainer = site.getTags().get(0);
+        this.tagPost = site.getTags().get(1);
+        this.tagData = site.getTags().get(2);
+        
+        
+        Elements els = doc.select(tagContainer);
+        
+         for (Element el : els) 
+         {
+            News n = new News();
+            Element e = el.select(tagPost).first();   
+            n.setTitulo(e.text());           
+            n.setUrl(e.select(this.link).toString());
+            n.setDataNoticia(el.getElementsByClass(tagData).text());        
+            
+            this.listNews.add(n);
+        }
+        return this.listNews;
+    }
+        
+    
+}//fim class

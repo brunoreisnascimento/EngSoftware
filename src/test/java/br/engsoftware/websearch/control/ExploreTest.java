@@ -3,27 +3,38 @@ package br.engsoftware.websearch.control;
 import br.engsoftware.websearch.model.News;
 import br.engsoftware.websearch.model.Site;
 import java.io.IOException;
+import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author cleverson
- * @version 1.0.0
+ *
+ * @author cleversonc6
  */
-public class ExploreTest 
-{
+public class ExploreTest {
     
+    public ExploreTest() {
+    }
     
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
     /**
-     * Testes do getDocument()
+     * Test of getDocument method, of class Explore.
      */
     @Test
     public void testGetDocument() 
     {
-        try 
+         try 
         {
             System.out.println("getDocument");
             Explore instance = new Explore();
@@ -42,65 +53,19 @@ public class ExploreTest
     }
 
     /**
-     * Teste do getContent()
-     */
-    @Test
-    public void testGetContent() 
-    {
-        System.out.println("getContent");
-        Document doc = null;
-        Site site = null;
-        Explore instance = null;
-        Elements expResult = null;
-        Elements result = instance.getContent(doc, site);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Teste do existNews
-     */
-    @Test
-    public void testExistsNews() 
-    {
-        System.out.println("existsNews");
-        Elements ele = null;
-        String key = "";
-        Explore instance = null;
-        boolean expResult = false;
-        boolean result = instance.existsNews(ele, key);
-        assertEquals(expResult, result);
-        fail("Falhou!");
-    }
-
-    /**
-     * Teste do makeNews()
+     * Test of makeNews method, of class Explore.
      */
     @Test
     public void testMakeNews() 
     {
         System.out.println("makeNews");
-        Elements ele = null;
-        String tag = "";
-        Explore instance = null;
-        News expResult = null;
-        News result = instance.makeNews(ele, tag);
+        Site site = null;
+        Explore instance = new Explore();
+        List<News> expResult = null;
+        List<News> result = instance.makeNews(site);
         assertEquals(expResult, result);
-       fail("Falhou!");
-       
-    }
-
-    /**
-     * Teste getNews()
-     */
-    @Test
-    public void testGetNews() {
-        System.out.println("getNews");
-        Explore instance = null;
-        News expResult = null;
-        News result = instance.getNews();
-        assertEquals(expResult, result);
-        fail("Falhou!");
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

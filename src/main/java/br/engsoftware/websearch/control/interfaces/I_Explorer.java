@@ -2,7 +2,6 @@ package br.engsoftware.websearch.control.interfaces;
 
 import br.engsoftware.websearch.model.Site;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 /**
  * @author cleverson
@@ -29,6 +28,6 @@ public interface I_Explorer
  * @version 0.0.1
  * @return Document
  */
-    Elements getContent(Document doc, Site site);
+    //Elements getContent(Document doc, Site site);
     
 }//fim interface

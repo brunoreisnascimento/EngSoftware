@@ -12,8 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,13 +26,8 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "news", catalog = "websearch", schema = "")
-@NamedQueries({
-    @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n"),
-    @NamedQuery(name = "News.findByUrl", query = "SELECT n FROM News n WHERE n.url = :url"),
-    @NamedQuery(name = "News.findByTitulo", query = "SELECT n FROM News n WHERE n.titulo = :titulo"),
-    @NamedQuery(name = "News.findByDataNoticia", query = "SELECT n FROM News n WHERE n.dataNoticia = :dataNoticia")})
-public class News implements Serializable {
-
+public class News implements Serializable 
+{
     private static final long serialVersionUID = -734547113339582812L;
     @Id
     @Basic(optional = false)
@@ -51,9 +44,8 @@ public class News implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @Column(name = "dataNoticia")
-    @Temporal(TemporalType.DATE)
-    private Date dataNoticia;
+    @Column(name = "dataNoticia")    
+    private String dataNoticia;
 
     public News()
     {    }
@@ -63,7 +55,7 @@ public class News implements Serializable {
         this.url = url;
     }
 
-    public News(String url, String titulo, Date dataNoticia) 
+    public News(String url, String titulo, String dataNoticia) 
     {
         this.url = url;
         this.titulo = titulo;
@@ -90,12 +82,12 @@ public class News implements Serializable {
         this.titulo = titulo;
     }
 
-    public Date getDataNoticia() 
+    public String getDataNoticia() 
     {
         return dataNoticia;
     }
 
-    public void setDataNoticia(Date dataNoticia) 
+    public void setDataNoticia(String dataNoticia) 
     {
         this.dataNoticia = dataNoticia;
     }
