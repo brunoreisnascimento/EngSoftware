@@ -12,8 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,11 +24,8 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "site", catalog = "websearch", schema = "")
-@NamedQueries({
-    @NamedQuery(name = "Site.findAll", query = "SELECT s FROM Site s"),
-    @NamedQuery(name = "Site.findByUrl", query = "SELECT s FROM Site s WHERE s.url = :url"),
-    @NamedQuery(name = "Site.findByTags", query = "SELECT s FROM Site s WHERE s.tags = :tags")})
-public class Site implements Serializable {
+public class Site implements Serializable 
+{
 
     private static final long serialVersionUID = 5738899195111394770L;
     
