@@ -6,6 +6,7 @@
 package br.engsoftware.websearch.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
@@ -43,17 +44,21 @@ public class Site implements Serializable
     private List<String> tags;
 
     public Site() 
-    {    }
+    { 
+        tags = new ArrayList<>();
+    }
 
     public Site(String url) 
     {
         this.url = url;
+        tags = new ArrayList<>();
     }
 
     public Site(String url, String tag) 
     {
         this.url = url;
         this.tags.add(tag);
+        tags = new ArrayList<>();
     }
 
     public String getUrl() 

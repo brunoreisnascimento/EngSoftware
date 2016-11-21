@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 
 /**
  * @author cleverson
- * @since 04/11/2016
+ * @since 10/11/2016
  * @version 1.0.0
  */
 public class Explore implements I_Explorer
@@ -29,7 +29,9 @@ public class Explore implements I_Explorer
     private static final String link = "a[href]";
 
     public Explore() 
-    {    }
+    {   
+        listNews = new ArrayList<>();
+    }
     
     
     public Explore(String keySearch)
@@ -73,19 +75,19 @@ public class Explore implements I_Explorer
     }
     
     /**
-     * Retorna uma lista<News> de determinado site
+     * Retorna uma lista<News>
+     * @see News
      * @param site
-     * @return 
+     * @return lista<News>
      */
-    public List<News> makeNews(Site site)
+    private List<News> makeNews(Site site)
     {                
         Document doc = this.getDocument(site);
-        
+                
         this.tagContainer = site.getTags().get(0);
         this.tagPost = site.getTags().get(1);
-        this.tagData = site.getTags().get(2);
-        
-        
+        this.tagData = site.getTags().get(2);        
+               
         Elements els = doc.select(tagContainer);
         
          for (Element el : els) 
@@ -93,13 +95,41 @@ public class Explore implements I_Explorer
             News n = new News();
             Element e = el.select(tagPost).first();   
             n.setTitulo(e.text());           
-            n.setUrl(e.select(this.link).toString());
+            n.setUrl(e.select(Explore.link).toString());
             n.setDataNoticia(el.getElementsByClass(tagData).text());        
             
             this.listNews.add(n);
         }
         return this.listNews;
     }
-        
     
+    private List<News> olharDigital()
+    {
+        String u = null;
+        List<News> lista = null;
+        for (int i = 1; i < 11; i++) 
+        {
+            u = "http://olhardigital.uol.com.br/noticias/";
+            u = u+i;        
+        Site s = new Site(u);
+        s.setTags("div.post-meta");
+        s.setTags("h3");
+        s.setTags("date");
+        
+        lista = this.makeNews(s);
+        }
+        return lista;
+    }    
+  
+    
+    public List<News> getNews(Site site)
+    {
+        if(site.getUrl().equalsIgnoreCase("http://olhardigital.uol.com.br/noticias/") )
+            return this.olharDigital();
+        else
+            return this.makeNews(site);
+    }
+  
+        
+        
 }//fim class

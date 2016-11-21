@@ -49,7 +49,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `websearch`;
-INSERT INTO `websearch`.`site` (`url`, `tags`, `nome`) VALUES ('', DEFAULT, DEFAULT);
+INSERT INTO `websearch`.`site` (`url`, `tags`, `nome`) VALUES ('http://br-linux.org', 'div.post, h2, postmetadata', 'brLinux');
+INSERT INTO `websearch`.`site` (`url`, `tags`, `nome`) VALUES ('http://olhardigital.uol.com.br/noticias/', 'div.item, h3, date', 'olharDigital');
+INSERT INTO `websearch`.`site` (`url`, `tags`, `nome`) VALUES ('http://www.profissionaisti.com.br/ultimas-ti/', 'div.entry-content-with-thumbnail, h2, span', 'profissionaisTi');
 
 COMMIT;
 

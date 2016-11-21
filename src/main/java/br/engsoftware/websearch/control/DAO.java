@@ -8,12 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
- *
  * @author cleversonc6
+ * @since 08/11/2016
+ * @version 1.0.0
  */
 public class DAO implements I_DAO
 {
-
     public DAO() 
     {   }    
 
@@ -29,8 +29,7 @@ public class DAO implements I_DAO
         EntityManager em = this.getEntityManager();  
         
         return em.getReference(obj.getClass(), id);      
-    }    
-    
+    }        
     
     @Override
     public void delete(Object object, String id)
@@ -63,8 +62,7 @@ public class DAO implements I_DAO
         Query q = em.createQuery(query);
         
         return q.getResultList();        
-    }
-    
+    }    
     
     @Override
     public void save(Object object)

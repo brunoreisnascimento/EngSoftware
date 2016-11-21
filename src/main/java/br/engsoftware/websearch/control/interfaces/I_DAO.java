@@ -19,13 +19,12 @@ public interface I_DAO
      * Persiste uma instância (da classe passada) no Banco de dados
      * @param object 
      */
-    void save(Object object);
-    
+    void save(Object object);    
     
     /**
      * Remove do Banco de dados o objeto correspondente ao ID
      * @param obj
-     * @param id 
+     * @param id
      */
     public void delete(Object obj, String id);
     
@@ -39,6 +38,7 @@ public interface I_DAO
     
     /**
      * Retorna uma lista com todos os objetos
+     * @param query
      * @return List<Object>
      */
     List<Object> getObejcts(String query);

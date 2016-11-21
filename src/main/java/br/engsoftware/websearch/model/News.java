@@ -109,6 +109,13 @@ public class News implements Serializable
         hash = 59 * hash + Objects.hashCode(this.url);
         return hash;
     }    
+
+    @Override
+    public String toString() 
+    {
+        
+        return "Url: " + this.url + " Titulo: " + this.titulo + " Data: " + this.dataNoticia;
+    }
     
     
 }
